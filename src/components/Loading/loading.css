@@ -1,0 +1,47 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit {
+  width: 400px;
+  height: 400px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.earth {
+  font-size: 5rem;
+  color: rgb(14, 165, 164);
+}
+
+.airplane-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  animation: orbit 5s linear infinite;
+}
+
+.airplane {
+  color: rgb(249, 115, 92);
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 3rem;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}

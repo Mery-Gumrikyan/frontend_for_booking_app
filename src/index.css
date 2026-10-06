@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.formWrapper {
+  background-image: url("./assets/images/login_background_img.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+}
+
+.form {
+  margin: auto;
+  border: 0.1px solid rgba(255, 252, 252, 0.1);
+  box-shadow: 0 1.25rem 3.75rem rgb(11, 31, 58);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  background: #00d4ff;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 212, 255, 0.8) 0%,
+    rgba(250, 255, 255, 0) 65%,
+    rgba(250, 255, 255, 0) 100%
+  );
+
+  width: 50%;
+  min-width: 20rem;
+}
+
+.roleChooser {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0.7rem;
+}
+
+.roleChooser .role {
+  border: none;
+}
+
+.roleChooser .chooseRole {
+  color: white;
+  background-color: rgb(10, 83, 140);
+  border: none;
+}
+
+.formBottomText {
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding: 0.7rem;
+  color: rgb(208, 219, 220);
+  border-radius: 2rem;
+}
+.formBottomText a {
+  color: rgb(11, 54, 83);
+}
+
+.formBottomText a:hover {
+  color: #005cef;
+}
+
+.button {
+  color: #0b1f3a;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #f8fbff;
+}
+
+.errorAlert {
+  font-size: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  color: red;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+}
+
+.userPageWrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./assets/images/airplane.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.travelerPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
