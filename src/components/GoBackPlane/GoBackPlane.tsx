@@ -3,18 +3,12 @@ import { useNavigate } from "react-router";
 import { Button, Tooltip } from "antd";
 import "./GoBackPlane.css";
 
-interface GoBackPlaneProps {
-  onClick?: () => void;
-}
-
-const GoBackPlane = ({ onClick }: GoBackPlaneProps) => {
+const GoBackPlane = () => {
   const navigate = useNavigate();
   const [isFlying, setIsFlying] = useState(false);
 
   const handleBack = () => {
     setIsFlying(true);
-
-    onClick?.();
 
     setTimeout(() => {
       navigate(-1);

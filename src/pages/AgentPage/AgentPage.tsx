@@ -1,13 +1,9 @@
-import GoBackPlane from "../../components/GoBackPlane/GoBackPlane";
+import LogOutPlane from "../../components/GoBackPlane/LogOutPlane";
 
 const AgentPage = () => {
   return (
     <div>
-      <GoBackPlane
-        onClick={() => {
-          localStorage.removeItem("accessToken");
-        }}
-      />
+      <LogOutPlane />
 
       <p>Welcome, , you entered as travel agent</p>
     </div>

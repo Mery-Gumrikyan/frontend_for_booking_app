@@ -1,13 +1,9 @@
-import GoBackPlane from "../../components/GoBackPlane/GoBackPlane";
+import LogOutPlane from "../../components/GoBackPlane/LogOutPlane";
 
 function TravelerPage() {
   return (
     <div className="userPageWrapper">
-      <GoBackPlane
-        onClick={() => {
-          localStorage.removeItem("accessToken");
-        }}
-      />
+      <LogOutPlane />
 
       <p>welcome to traveler page</p>
     </div>

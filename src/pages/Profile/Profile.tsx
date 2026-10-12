@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useGetProfileQuery } from "../../store/authApi";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import Loading from "../../components/Loading/Loading";
 
 const Profile = () => {
@@ -13,7 +13,7 @@ const Profile = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  console.log(profile);
+
   useEffect(() => {
     if (!profile) {
       return;
@@ -32,8 +32,14 @@ const Profile = () => {
     return <Loading />;
   }
 
+  useEffect(() => {
+    if (isError) {
+      localStorage.removeItem("accessToken");
+    }
+  }, [isError]);
+
   if (isError) {
-    return <div>Could not load profile</div>;
+    return <Navigate to="/login" replace />;
   }
 
   return <Loading />;
