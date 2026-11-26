@@ -5,7 +5,7 @@ export enum UserRole {
   Agent = "agent",
 }
 
-interface LoginRequest {
+export interface LoginRequest {
   email: string;
   password: string;
 }

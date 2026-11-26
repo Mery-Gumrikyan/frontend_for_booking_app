@@ -6,13 +6,9 @@ import EmailInput from "../../components/EmailInput/EmailInput";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 
 import { useLoginMutation } from "../../store/authApi";
+import type { LoginRequest } from "../../store/authApi";
 
 const { Text } = Typography;
-
-interface LoginRequest {
-  email: string;
-  password: string;
-}
 
 const Login = () => {
   const [login] = useLoginMutation();
@@ -48,7 +44,7 @@ const Login = () => {
 
         {errorMessage && (
           <Form.Item>
-            <Alert title={errorMessage} banner />
+            <Alert title={errorMessage} type="error" banner />
           </Form.Item>
         )}
 
