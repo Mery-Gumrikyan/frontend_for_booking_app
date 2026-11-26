@@ -1,0 +1,247 @@
+.flightCard {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-subtle);
+  padding: 1.15rem 1.25rem 1rem;
+  width: 100%;
+}
+
+.flightCard.isSelected {
+  border-color: var(--brand-primary);
+  background: linear-gradient(
+    180deg,
+    rgba(224, 242, 254, 0.96) 0%,
+    rgba(240, 249, 255, 0.94) 100%
+  );
+  box-shadow:
+    0 0 0 3px rgba(10, 83, 140, 0.14),
+    var(--shadow-subtle);
+}
+
+.flightCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.flightRouteLabel {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  min-width: 0;
+}
+
+.flightRouteArrow {
+  margin: 0 0.35rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.flightSelectedBadge {
+  flex-shrink: 0;
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.flightSchedule {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(4.75rem, 1.15fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.flightEndpoint {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.flightEndpointArrival {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.flightClock {
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--brand-navy);
+}
+
+.flightDate,
+.flightCity,
+.flightDuration {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.flightCity {
+  font-weight: 700;
+  color: var(--text-main);
+  overflow-wrap: anywhere;
+}
+
+.isPlaceholder {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.flightTimeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.flightTimelineTrack {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #cbd5e1;
+  margin: 0.45rem 0 0.15rem;
+}
+
+.flightTimelineTrack::before,
+.flightTimelineTrack::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  transform: translateY(-50%);
+}
+
+.flightTimelineTrack::before {
+  left: 0;
+}
+
+.flightTimelineTrack::after {
+  right: 0;
+}
+
+.flightTimelinePlane {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--brand-primary);
+  background: #ffffff;
+  padding: 0 0.3rem;
+  font-size: 0.85rem;
+  background: transparent;
+}
+
+.flightNonStop {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #047857;
+  background: #ecfdf5;
+  border-radius: 999px;
+  padding: 0.12rem 0.45rem;
+  line-height: 1.4;
+}
+
+.flightCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.05rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(11, 31, 58, 0.08);
+}
+
+.flightPriceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.flightPriceLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.flightPrice {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.flightSelectButton {
+  min-height: 40px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+
+.flightSeatsInfo {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+.flightCardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flightActionButton {
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  min-height: 36px;
+}
+
+.flightCard.isSelected .flightSelectButton {
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  background: #ffffff;
+}
+
+@media (max-width: 30rem) {
+  .flightCard {
+    padding: 1rem 0.9rem 0.9rem;
+  }
+
+  .flightSchedule {
+    gap: 0.4rem;
+  }
+
+  .flightDate,
+  .flightCity,
+  .flightDuration {
+    font-size: 0.75rem;
+  }
+
+  .flightCardFooter {
+    align-items: stretch;
+  }
+
+  .flightSelectButton {
+    width: 100%;
+  }
+}

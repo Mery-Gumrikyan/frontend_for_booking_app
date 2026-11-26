@@ -1,0 +1,158 @@
+.flightCreator {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.95fr);
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+}
+
+.flightForm {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 1.25rem 3.75rem rgba(11, 31, 58, 0.5);
+  width: 100%;
+  margin: 0;
+}
+
+.flightSidePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.flightPreviewPanel {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.flightPreviewTitle {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+}
+
+.flightPreviewHint {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.destinationRow,
+.departureAndArrivalDate,
+.ticketPriceAndCurrency {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.destinationRow .destinationField,
+.departureAndArrivalDate .ant-form-item,
+.ticketPriceAndCurrency .ant-form-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.destinationArrow {
+  flex-shrink: 0;
+  margin: auto;
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.flightForm .ant-select,
+.flightForm .ant-picker,
+.flightForm .ant-input-number {
+  width: 100%;
+}
+
+.flightFormField {
+  width: 100%;
+  min-width: 0;
+  border: 0.06rem solid #dbe3ef;
+  border-radius: 0.75rem;
+  padding: 0.7rem;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.flightFormField:focus-within {
+  border-color: rgb(10, 83, 140);
+  box-shadow: 0 0 0 0.18rem rgba(10, 83, 140, 0.12);
+}
+
+.custom-option {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(10, 83, 140);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flightFormLabel {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.flightFormButton {
+  background-color: rgb(10, 83, 140);
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+@media (max-width: 58rem) {
+  .flightCreator {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 37.5rem) {
+
+  .flightForm,
+  .flightPreviewPanel {
+    padding: 1rem;
+  }
+
+  .destinationRow,
+  .departureAndArrivalDate,
+  .ticketPriceAndCurrency {
+    gap: 0.75rem;
+  }
+
+  .departureAndArrivalDate,
+  .ticketPriceAndCurrency {
+    flex-direction: column;
+  }
+
+  .departureAndArrivalDate .ant-form-item,
+  .ticketPriceAndCurrency .ant-form-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 18.75rem) {
+  .destinationRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .destinationArrow {
+    display: none;
+  }
+
+  .destinationRow .destinationField {
+    width: 100%;
+  }
+}

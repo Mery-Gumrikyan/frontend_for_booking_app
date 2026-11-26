@@ -1,0 +1,21 @@
+.errorPage {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../assets/images/sea.webp");
+  filter: brightness(70%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+}
+
+.errorText {
+  margin-top: 7rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgb(0, 60, 95);
+}

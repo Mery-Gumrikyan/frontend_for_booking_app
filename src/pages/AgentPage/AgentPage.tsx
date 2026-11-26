@@ -1,11 +1,21 @@
-import LogOutPlane from "../../components/GoBackPlane/LogOutPlane";
+import AppHeader from "../../components/AppHeader/AppHeader";
+import FlightForm from "../FlightForm/FlightForm";
+import WelcomeText from "../../components/WelcomeText/WelcomeText";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 
 const AgentPage = () => {
-  return (
-    <div>
-      <LogOutPlane />
+  const user = useSelector((state: RootState) => state.user.user);
 
-      <p>Welcome, , you entered as travel agent</p>
+  return (
+    <div className="agentPage">
+      <div className="agentContentWrapper">
+        <AppHeader />
+
+        <WelcomeText name={user?.name} role={user?.role} />
+
+        <FlightForm />
+      </div>
     </div>
   );
 };

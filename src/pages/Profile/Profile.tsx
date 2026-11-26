@@ -1,42 +1,46 @@
 import { useEffect } from "react";
-import { useGetProfileQuery } from "../../store/authApi";
+import { useGetUserQuery } from "../../store/authApi";
 import { Navigate, useNavigate } from "react-router";
 import Loading from "../../components/Loading/Loading";
 
 const Profile = () => {
   const navigate = useNavigate();
   const {
-    data: profile,
+    data: user,
     isLoading,
     isError,
-  } = useGetProfileQuery(undefined, {
+  } = useGetUserQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
 
-
   useEffect(() => {
-    if (!profile) {
+    if (isLoading) {
+      return;
+    }
+
+    if (!user) {
+      navigate("/login", { replace: true });
       return;
     }
 
     const timer = setTimeout(() => {
-      navigate(`/profile/${profile.userRole}`, {
+      navigate(`/profile/${user.role}`, {
         replace: true,
       });
-    }, 1500);
+    }, 1000);
 
     return () => clearTimeout(timer);
-  }, [profile, navigate]);
-
-  if (isLoading) {
-    return <Loading />;
-  }
+  }, [user, isLoading, navigate]);
 
   useEffect(() => {
     if (isError) {
       localStorage.removeItem("accessToken");
     }
   }, [isError]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (isError) {
     return <Navigate to="/login" replace />;

@@ -1,0 +1,128 @@
+.tripSummaryBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid rgba(10, 83, 140, 0.16);
+  box-shadow: 0 -8px 28px rgba(11, 31, 58, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.tripSummaryInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) auto auto;
+  gap: 1rem 1.25rem;
+  align-items: center;
+}
+
+.tripSummaryLegs,
+.tripSummaryMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.tripSummaryLeg,
+.tripSummaryStat {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.tripSummaryLegLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tripSummaryLegValue {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+  overflow-wrap: anywhere;
+}
+
+.tripSummaryStatValue,
+.tripSummaryTotal {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+}
+
+.tripSummaryAction {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  min-width: 11rem;
+}
+
+.tripSummaryButton {
+  min-height: 46px;
+  font-weight: 700;
+}
+
+.tripSummaryButton:disabled {
+  opacity: 0.85;
+}
+
+.tripSummaryError {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.travelerPageWrapper.hasStickySummary {
+  padding-bottom: 9.5rem;
+}
+
+@media (max-width: 48rem) {
+  .tripSummaryInner {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .tripSummaryMeta {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .tripSummaryLegValue {
+    font-size: 0.84rem;
+  }
+
+  .tripSummaryAction {
+    min-width: 0;
+  }
+
+  .tripSummaryButton {
+    width: 100%;
+  }
+
+  .travelerPageWrapper.hasStickySummary {
+    padding-bottom: calc(16.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 30rem) {
+  .tripSummaryBar {
+    padding: 0.65rem 0.75rem calc(0.65rem + env(safe-area-inset-bottom));
+  }
+
+  .tripSummaryTotal,
+  .tripSummaryStatValue {
+    font-size: 0.95rem;
+  }
+}

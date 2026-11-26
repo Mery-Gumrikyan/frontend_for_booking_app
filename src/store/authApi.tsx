@@ -1,9 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export enum UserRole {
-  Traveler = "traveler",
-  Agent = "agent",
-}
+import type { User, UserRole } from "../type";
 
 export interface LoginRequest {
   email: string;
@@ -28,16 +24,11 @@ interface RegistrationResponse {
   message: string;
 }
 
-interface UserProfile {
-  name: string;
-  userRole: UserRole;
-}
-
 export const authApi = createApi({
   reducerPath: "authApi",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
+    baseUrl: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
 
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("accessToken");
@@ -66,11 +57,16 @@ export const authApi = createApi({
       }),
     }),
 
-    getProfile: builder.query<UserProfile, void>({
-      query: () => "/auth/profile",
+    getUser: builder.query<User, void>({
+      query: () => "/auth/me",
+      keepUnusedDataFor: 0,
     }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useGetProfileQuery } =
-  authApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useGetUserQuery,
+  useLazyGetUserQuery,
+} = authApi;

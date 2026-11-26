@@ -8,15 +8,15 @@ const PasswordInput = () => {
       rules={[
         {
           required: true,
-          message: "Խնդրում ենք մուտքագրեք Ձեր գաղտնաբառը",
+          message: "Please enter your password.",
         },
-        { min: 8, message: "Գաղտնաբառը պետք է պարունակի առնվազն 8 նիշ։" },
+        { min: 8, message: "The password must be at least 8 characters long." },
       ]}
     >
       <Input.Password
         prefix={<LockOutlined />}
         type="password"
-        placeholder="Գաղտնաբառ"
+        placeholder="Password"
       />
     </Form.Item>
   );

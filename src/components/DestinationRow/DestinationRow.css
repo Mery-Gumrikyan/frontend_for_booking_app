@@ -1,0 +1,65 @@
+.destinationRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.destinationRow .ant-form-item {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.destinationRow .ant-form-item-label {
+  padding-bottom: 2px;
+}
+
+.destinationRow .ant-form-item-label label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.customOption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.destinationCityIcon {
+  color: var(--brand-primary);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.destinationRow .ant-select {
+  width: 100%;
+}
+
+.destinationRow .ant-select-selection-item .custom-option {
+  color: var(--brand-navy);
+}
+
+@media (max-width: 37.5rem) {
+  .destinationCityIcon {
+    display: none;
+  }
+
+  .destinationRow {
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 25rem) {
+  .swapDestinationsBtn {
+    display: none;
+  }
+}

@@ -16,7 +16,7 @@ const GoBackPlane = () => {
   };
 
   return (
-    <Tooltip title="Գնալ հետ">
+    <Tooltip title="Go Back">
       <Button
         type="text"
         onClick={handleBack}

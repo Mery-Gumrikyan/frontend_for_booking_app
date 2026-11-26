@@ -1,0 +1,130 @@
+.reservationsSection {
+  width: 100%;
+}
+
+.reservationsToggleBtn {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  font-weight: 700;
+  color: var(--brand-navy);
+  height: 44px;
+}
+
+.reservationsToggleBtn:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+.reservationsContent {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.reservationsContentTitle {
+  margin-bottom: 1.25rem !important;
+  color: var(--brand-navy);
+  font-size: 1.3rem !important;
+}
+
+.reservationCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(11, 31, 58, 0.05);
+}
+
+.reservationCard:hover {
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.1);
+  border-color: #cbd5e1;
+}
+
+.reservationCard.isCancelled {
+  opacity: 0.7;
+  background: #f8fafc;
+}
+
+.reservationCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.reservationId {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.reservationCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reservationFlightRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.reservationRouteBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: var(--text-muted);
+}
+
+.reservationTimeText {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.reservationMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.reservationPrice {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.reservationFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+
+.reservationDateCreated {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+

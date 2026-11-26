@@ -1,104 +1,282 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+:root {
+  /* Signature Brand Identity (Preserved Ocean Travel Palette) */
+  --brand-primary: rgb(10, 83, 140);
+  --brand-primary-hover: rgb(8, 68, 115);
+  --brand-navy: #0b1f3a;
+  --brand-cyan: #0284c7;
+  --brand-cyan-light: #e0f2fe;
+
+  --text-main: #0b1f3a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-card: 0 20px 45px rgba(11, 31, 58, 0.18);
+  --shadow-subtle: 0 4px 12px rgba(11, 31, 58, 0.08);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   line-height: 1.5;
 }
 
+body {
+  font-family:
+    "Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--text-main);
+  background-color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Auth Layout (Login & Registration) - Preserves Travel Background & Identity
+   ========================================================================== */
 .formWrapper {
-  background-image: url("./assets/images/login_background_img.webp");
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(11, 31, 58, 0.35) 0%,
+      rgba(10, 83, 140, 0.45) 100%
+    ),
+    url("./assets/images/login_background_img.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
-  height: 100vh;
-
+  min-height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
 }
 
 .form {
   margin: auto;
-  border: 0.1px solid rgba(255, 252, 252, 0.1);
-  box-shadow: 0 1.25rem 3.75rem rgb(11, 31, 58);
-  border-radius: 1.5rem;
-  padding: 3rem;
-  background: #00d4ff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-xl);
+  padding: 2.75rem 2.25rem;
   background: linear-gradient(
-    0deg,
-    rgba(0, 212, 255, 0.8) 0%,
-    rgba(250, 255, 255, 0) 65%,
-    rgba(250, 255, 255, 0) 100%
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 249, 255, 0.92) 100%
   );
-
-  width: 50%;
-  min-width: 20rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  width: 100%;
+  max-width: 440px;
 }
 
 .roleChooser {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 0.7rem;
-}
-
-.roleChooser .role {
+  margin-bottom: 1.25rem;
+  background: rgba(10, 83, 140, 0.08);
+  padding: 4px;
+  border-radius: var(--radius-md);
   border: none;
 }
 
+.roleChooser .ant-radio-button-wrapper {
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  height: 38px;
+  line-height: 38px;
+  transition: all 0.2s ease;
+}
+
+.roleChooser .ant-radio-button-wrapper-checked,
 .roleChooser .chooseRole {
-  color: white;
-  background-color: rgb(10, 83, 140);
-  border: none;
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(10, 83, 140, 0.25);
+}
+
+.roleChooser .ant-radio-button-wrapper::before {
+  display: none;
 }
 
 .formBottomText {
-  font-weight: 900;
-  font-size: 1.2rem;
-  padding: 0.7rem;
-  color: rgb(208, 219, 220);
-  border-radius: 2rem;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 1.25rem;
 }
+
 .formBottomText a {
-  color: rgb(11, 54, 83);
+  color: var(--brand-primary);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .formBottomText a:hover {
-  color: #005cef;
+  color: var(--brand-primary-hover);
+  text-decoration: underline;
 }
 
 .button {
-  color: #0b1f3a;
-  padding: 0.7rem;
-  font-size: 1rem;
+  background-color: var(--brand-primary);
+  color: #ffffff;
   border: none;
-  border-radius: 0.5rem;
-  background-color: #f8fbff;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  height: 46px;
+  font-size: 1rem;
+  box-shadow: 0 4px 14px rgba(10, 83, 140, 0.25);
+  transition: all 0.2s ease;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--brand-primary-hover);
+  box-shadow: 0 6px 18px rgba(10, 83, 140, 0.35);
 }
 
 .errorAlert {
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: flex;
   gap: 0.5rem;
-  color: red;
+  color: #dc2626;
   font-weight: 600;
   align-items: center;
   justify-content: center;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.userPageWrapper {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("./assets/images/airplane.webp");
+/* ==========================================================================
+   Traveler Page - Preserves Airplane Background & Adds Clean Visual Rhythm
+   ========================================================================== */
+.travelerPageWrapper {
+  width: 100%;
+  min-height: 100dvh;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(11, 31, 58, 0.35) 0%,
+      rgba(10, 83, 140, 0.25) 100%
+    ),
+    url("./assets/images/airplane.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  padding: 2rem 1.5rem 4rem;
 }
 
-.travelerPage {
+.travelerContentWrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   Agent Page - Preserves Pastel Layout & Refines Alignment
+   ========================================================================== */
+.agentPage {
+  background: linear-gradient(135deg, #eaf2f8 0%, #dce7f0 45%, #f5eee6 100%);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.agentContentWrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   Auth Header — Icon badge + title + subtitle inside the form card
+   ========================================================================== */
+.authHeader {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.authIconBadge {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--brand-primary) 0%,
+    var(--brand-cyan) 100%
+  );
+  box-shadow: 0 6px 18px rgba(10, 83, 140, 0.3);
+  margin-bottom: 0.9rem;
+}
+
+.authIconBadge i {
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.authTitle {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.authSubtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: block;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 37.5rem) {
+  .form {
+    padding: 2rem 1.25rem;
+  }
+
+  .userPageWrapper,
+  .agentPage {
+    padding: 1.25rem 1rem 3rem;
+  }
 }

@@ -11,7 +11,11 @@ import {
 import EmailInput from "../../components/EmailInput/EmailInput";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import GoBackPlane from "../../components/GoBackPlane/GoBackPlane";
-import { useRegisterMutation, UserRole } from "../../store/authApi";
+import { useRegisterMutation } from "../../store/authApi";
+import { UserRole } from "../../type";
+
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import type { SerializedError } from "@reduxjs/toolkit";
 
 const { Paragraph, Text } = Typography;
 
@@ -23,10 +27,11 @@ interface RegistrationFormValues {
   email: string;
   password: string;
 }
+type RegistrationError = FetchBaseQueryError | SerializedError;
 
 const Registration = () => {
   const navigate = useNavigate();
-  const [register, { error }] = useRegisterMutation();
+  const [register, { error, isLoading }] = useRegisterMutation();
   const [role, setRole] = useState<UserRole>(UserRole.Traveler);
 
   const onFinish = async (values: RegistrationFormValues) => {
@@ -34,8 +39,9 @@ const Registration = () => {
       role,
       name: values.name,
       surname: values.surname,
-      citizenship: values.citizenship,
-      chronicDiseases: values.chronicDiseases,
+      citizenship: role === UserRole.Traveler ? values.citizenship : undefined,
+      chronicDiseases:
+        role === UserRole.Traveler ? values.chronicDiseases : undefined,
       email: values.email,
       password: values.password,
     };
@@ -56,7 +62,18 @@ const Registration = () => {
         size="large"
         className="form"
         onFinish={onFinish}
+        clearOnDestroy
       >
+        <div className="authHeader">
+          <div className="authIconBadge">
+            <i className="fa-solid fa-user-plus" />
+          </div>
+          <span className="authTitle">Registration</span>
+          <span className="authSubtitle">
+            Create an account and begin your journey
+          </span>
+        </div>
+
         <Radio.Group
           value={role}
           onChange={(e) => setRole(e.target.value)}
@@ -78,11 +95,9 @@ const Registration = () => {
 
         <Form.Item
           name="name"
-          rules={[
-            { required: true, message: "Խնդրում ենք մուտքագրել Ձեր անունը!" },
-          ]}
+          rules={[{ required: true, message: "Please enter your name." }]}
         >
-          <Input prefix={<UserOutlined />} placeholder="անուն" />
+          <Input prefix={<UserOutlined />} placeholder="First Name" />
         </Form.Item>
 
         <Form.Item
@@ -90,11 +105,11 @@ const Registration = () => {
           rules={[
             {
               required: true,
-              message: "Խնդրում ենք մուտքագրել Ձեր ազգանունը!",
+              message: "Please enter your last name.",
             },
           ]}
         >
-          <Input prefix={<UserOutlined />} placeholder="ազգանուն" />
+          <Input prefix={<UserOutlined />} placeholder="Last Name" />
         </Form.Item>
 
         <EmailInput />
@@ -108,13 +123,13 @@ const Registration = () => {
               rules={[
                 {
                   required: true,
-                  message: "Խնդրում ենք մուտքագրել Ձեր քաղաքացիությունը!",
+                  message: "Please enter your nationality.",
                 },
               ]}
             >
               <Select
                 prefix={<GlobalOutlined />}
-                placeholder="քաղաքացիություն"
+                placeholder="Nationality"
                 options={[
                   { label: "ARM", value: "ARM" },
                   { label: "RUS", value: "RUS" },
@@ -130,16 +145,17 @@ const Registration = () => {
               rules={[
                 {
                   required: true,
-                  message: "Խնդրում ենք նշել՝ ունե՞ք քրոնիկ հիվանդություններ։",
+                  message:
+                    "Please indicate whether you have any chronic medical conditions.",
                 },
               ]}
             >
               <Select
                 allowClear
-                placeholder="Արդյո՞ք ունեք քրոնիկ հիվանդություններ։"
+                placeholder="Do you have any chronic medical conditions?"
                 options={[
-                  { label: "Այո", value: true },
-                  { label: "Ոչ", value: false },
+                  { label: "Yes", value: true },
+                  { label: "No", value: false },
                 ]}
                 style={{ width: "100%" }}
               />
@@ -148,14 +164,19 @@ const Registration = () => {
         )}
 
         <Form.Item>
-          <Button block type="primary" htmlType="submit" className="button">
-            Գրանցում
+          <Button
+            block
+            type="primary"
+            htmlType="submit"
+            className="button"
+            loading={isLoading}
+            disabled={isLoading}
+          >
+            Registration
           </Button>
         </Form.Item>
 
-        {error && (
-          <RegistrationResponse error={error as RegistrationResponseProps} />
-        )}
+        {error && <RegistrationResponse error={error} />}
 
         <GoBackPlane />
       </Form>
@@ -163,39 +184,48 @@ const Registration = () => {
   );
 };
 
-type RegistrationResponseProps = {
-  data?: {
-    message?: string;
-  };
-  status?: number;
-};
+function RegistrationResponse({ error }: { error: RegistrationError }) {
+  const errorMsg =
+    "data" in error &&
+    typeof error.data === "object" &&
+    error.data !== null &&
+    "message" in error.data &&
+    typeof error.data.message === "string"
+      ? error.data.message
+      : undefined;
 
-function RegistrationResponse({ error }: { error: RegistrationResponseProps }) {
-  if (
-    error.data?.message === "the user has already registered" &&
-    error.status === 409
-  ) {
+  const status = "status" in error ? error.status : undefined;
+
+  if (status === 409 || errorMsg === "the user has already registered") {
     return (
       <Paragraph className="errorAlert">
         <CloseCircleFilled />
-        <Text className="errorAlert">Դուք արդեն գրանցված եք!!!</Text>
-      </Paragraph>
-    );
-  } else if (error.status === 500) {
-    return (
-      <Paragraph className="errorAlert">
-        <Text className="errorAlert">
-          Գրանցումը ձախողվեց։ Խնդրում ենք փորձել կրկին։
-        </Text>
-      </Paragraph>
-    );
-  } else {
-    return (
-      <Paragraph className="errorAlert">
-        <Text className="errorAlert">Ինչ-որ բան սխալ է</Text>
+        <Text className="errorAlert">You are already registered!</Text>
       </Paragraph>
     );
   }
+  if (errorMsg) {
+    return (
+      <Paragraph className="errorAlert">
+        <CloseCircleFilled />
+        <Text className="errorAlert">{errorMsg}</Text>
+      </Paragraph>
+    );
+  }
+  if (status === 500) {
+    return (
+      <Paragraph className="errorAlert">
+        <Text className="errorAlert">
+          Registration failed. Please try again.
+        </Text>
+      </Paragraph>
+    );
+  }
+  return (
+    <Paragraph className="errorAlert">
+      <Text className="errorAlert">Something went wrong.</Text>
+    </Paragraph>
+  );
 }
 
 export default Registration;

@@ -1,3 +1,6 @@
 export const DateFormat = {
-  ShortDate1: "YYYY-M-D",
+  DisplayDateTime: "DD MMM YYYY, HH:mm",
+  DisplayDate: "DD MMM YYYY",
+  IsoDate: "YYYY-MM-DD",
+  IsoDateTime: "YYYY-MM-DDTHH:mm:ss",
 };

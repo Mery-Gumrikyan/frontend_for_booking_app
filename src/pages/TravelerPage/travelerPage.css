@@ -1,0 +1,18 @@
+.flightRouteCollapse .ant-collapse-title {
+  width: 100%;
+}
+
+.flightRouteCollapse .ant-collapse-item .ant-collapse-header {
+  padding: 0;
+}
+
+.flightRouteCollapse .ant-collapse-panel .ant-collapse-body {
+  padding: 0;
+}
+
+.flightCardsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}

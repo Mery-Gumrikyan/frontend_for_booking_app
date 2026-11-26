@@ -8,12 +8,12 @@ const EmailInput = () => {
       rules={[
         {
           required: true,
-          message: "Խնդրում ենք մուտքագրեք էլեկտրոնային հասցեն!",
+          message: "Please enter your email address!",
         },
-        { type: "email", message: "Էլ հասցեն վավեր չէ" },
+        { type: "email", message: "The email address is invalid." },
       ]}
     >
-      <Input prefix={<MailOutlined />} placeholder="Էլ․ փոստ" />
+      <Input prefix={<MailOutlined />} placeholder="Email" />
     </Form.Item>
   );
 };
